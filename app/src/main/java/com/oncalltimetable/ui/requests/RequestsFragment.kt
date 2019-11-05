@@ -4,25 +4,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.oncalltimetable.R
 import kotlinx.android.synthetic.main.fragment_requests.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class RequestsFragment : Fragment() {
 
-    private lateinit var requestsViewModel: RequestsViewModel
+    private val requestsViewModel: RequestsViewModel by viewModel()
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        requestsViewModel =
-                ViewModelProviders.of(this).get(RequestsViewModel::class.java)
-
         subscribeUi()
 
         return inflater.inflate(R.layout.fragment_requests, container, false)
